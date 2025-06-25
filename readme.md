@@ -17,3 +17,5 @@ En espérant que je pourrais en inspirer certains, en aider d'autres ou en motiv
 
 
 🍿
+
+![image](https://github.com/user-attachments/assets/a40ba3b0-c174-40de-9588-41bb33cedf07)
