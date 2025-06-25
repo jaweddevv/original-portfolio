@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍿</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div id="bg-animation"></div>
+    <section id="logo">
+        <div class="logo">
+            <img src="singe-mignon.gif" alt="Logo">
+        </div>
+    </section>
+
+    <nav>
+        <a href="#" onclick="showPage('home')">Accueil</a>
+        <a href="#" onclick="showPage('qui')">Qui suis-je ?</a>
+        <a href="#" onclick="showPage('projets')">Projets</a>
+    </nav>
+
+    <section id="home" class="page active">
+        <div class="contenu">
+            <div class="box">
+                <h1>**********<span> Jawed<br>Introduction</span></h1>
+                <h3 class="typing-text">
+                    Bienvenue sur <span>mon site ! </span><br><br>Dans un premier temps, <span>merci à vous</span> d'avoir prit le temps de jetter un coup d'oeil à la <span>seconde partie de mon CV.</span><br>
+                    <br>Vous aurez dans ce site un développement plus détaillée de <span>mes compétences</span>, <span>mes expériences</span> et <span>mes projets</span>.<br><br>
+                    <span></span>Je vous ai également prévu une petite musique pour mieux apprécier la lecture de mon site juste <span>en dessous</span>.
+                    
+                    <br>
+                    <div class="custom-audio-player-minimal" id="customAudio">
+    <button id="playPauseBtn">
+        <i class="fa fa-play"></i>
+    </button>
+</div>
+<audio id="realAudio">
+    <source src="immersion2.mp3" type="audio/mpeg">
+    Votre navigateur ne supporte pas l'élément audio.
+</audio>
+                </h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="qui" class="page">
+        <div class="contenu">
+            <div class="box">
+                <h1>**********<span> Jawed<br>Qui suis-je ?</span></h1>
+                <h3 class="typing-text">
+					Qui <span>suis-je ?</span><br><br>
+                    Je m’appelle <span>Jawed **********</span>,<br> j’ai <span>** ans</span> et je suis <span>passionné par l’informatique</span> depuis mon plus <span>jeune âge.</span>
+                    <br><br>
+                     <span>Depuis * ans,</span> je me consacre pleinement au <span>développement web et à la programmation</span>, avec une de solides bases en <span>Python</span> et des technologies <span>front-end/back-end.</span>
+                     <br><br> 
+                     Sur la plateforme <span>******</span>, j’ai conçu et déployé plusieurs <span>sites web</span> orientés <span>crypto-monnaies</span>, alliant <span>, esthétique et performance.</span>
+                     <br><br> 
+                     Aujourd’hui à la <span>recherche d’une alternance</span>, je souhaite mettre mes compétences techniques et ma rigueur au service d’une équipe <span>dynamique</span> pour contribuer activement à des <span>projets ambitieux</span> tout en évoluant que ce soit <span>techniquement que professionellement.</span>
+                     <br><br>
+                    <div class="download-container">
+                <a href="CV.pdf" download class="download-btn">TELECHARGER MON CV</a>
+            </div>
+                </h3>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="projets" class="page">
+        <div class="contenu">
+            <div class="box">
+                <h1>Mes <span>projets</span></h1>
+                <h3 class="typing-text">
+                    Mes <span>projets d'avenir :</span><br><br><span>BTS SIO (Option SLAM) en alternance</span> : Développement d'applications web et mobiles, un BTS que je compte poursuivre sur deux ans afin d'approfondir mes connaissances dans un millieu riche.<br><span>2025-2027</span><br>
+                    <br>
+                    <span>3ème année de licence professionnelle en alternance</span> : 
+                    <br>Enrichissement des compétences en développement web, avec un accent sur les technologies avancées et la gestion de projets.<br><span>2027-2028</span><br>
+                    <br>
+                    <br>
+                    <span>M2 | Parcours Conception et Développement en alternance</span> : 
+                    <br>Acquérir une expertise avancée en conception logicielle, architecture d’applications et gestion de projets innovants.<br>
+                    <span>2028-2030</span>
+                </h3>
+                </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script> 
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+  // 1) on récupère le container
+  const bg = document.getElementById("bg-animation");
+
+  // 2) on crée le canvas et on lui donne l’ID #particles
+  const canvas = document.createElement("canvas");
+  canvas.id = "particles";
+  bg.appendChild(canvas);
+
+  // 3) référence au contexte, tableau de particules, couleurs…
+  const ctx = canvas.getContext("2d");
+  let particles = [];
+  const colors = ["#5a58e9", "#c064c4", "#338cff", "#3f008e", "#4e0457"];
+  let w, h;
+
+  // constructeur de particule
+  function Particle() {
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.radius = Math.random() * 1.2 + 0.7;
+    this.color = colors[Math.floor(Math.random() * colors.length)];
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
+  }
+
+  // génère N particules
+  function createParticles(num) {
+    particles = [];
+    for (let i = 0; i < num; i++) particles.push(new Particle());
+  }
+
+  // dessine et déplace
+  function drawParticles() {
+    ctx.clearRect(0, 0, w, h);
+    for (const p of particles) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.shadowColor = p.color;
+      ctx.shadowBlur = 20;
+      ctx.fill();
+
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+    }
+  }
+
+  // boucle
+  function animate() {
+    drawParticles();
+    requestAnimationFrame(animate);
+  }
+
+  // 4) redimensionne 
+  function resize() {
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = w;
+    canvas.height = h;
+    createParticles(Math.floor((w * h) / 3000));
+  }
+
+  window.addEventListener("resize", resize);
+
+  // 5) lancement
+  resize();
+  animate();
+});
+</script>
+
+
+</body>
+</html>
